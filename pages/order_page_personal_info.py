@@ -1,47 +1,43 @@
 from selenium.webdriver.common.by import By
 import allure
 
+from locators.order_page_personal_info_locators import OrderPagePersonalAccLocators
+from pages.base_page import BasePage
 
-class OrderPage:
-    name = [By.XPATH, './/input[@placeholder="* Имя"]']
-    lastname = [By.XPATH, './/input[@placeholder="* Фамилия"]']
-    address = [By.XPATH, './/input[@placeholder="* Адрес: куда привезти заказ"]']
-    metro_station_button = [By.XPATH, './/input[@placeholder="* Станция метро"]']
-    metro_stations = [(By.XPATH, './/div[text()="Черкизовская"]'),
-                      (By.XPATH, './/div[text()="Бульвар Рокоссовского"]')]
-    mobile_number = [By.XPATH, './/input[@placeholder="* Телефон: на него позвонит курьер"]']
-    next_button = [By.XPATH, './/button[text()="Далее"]']
+
+class OrderPage(BasePage):
 
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
+        self.locators = OrderPagePersonalAccLocators()
 
     @allure.step('Заполнить поле "Имя"')
     def set_name(self, name):
-        self.driver.find_element(*self.name).send_keys(name)
+        self.fill_input(self.locators.name, name)
 
     @allure.step('Заполнить поле "Фамилия"')
     def set_lastname(self, lastname):
-        self.driver.find_element(*self.lastname).send_keys(lastname)
+        self.fill_input(self.locators.lastname, lastname)
 
     @allure.step('Заполнить поле "Адрес"')
     def set_address(self, address):
-        self.driver.find_element(*self.address).send_keys(address)
+        self.fill_input(self.locators.address, address)
 
     @allure.step('Кликнуть на поле "Станция метро"')
     def click_on_metro_station_button(self):
-        self.driver.find_element(*self.metro_station_button).click()
+        self.click_on_element(self.locators.metro_station_button)
 
     @allure.step('Выбрать станцию метро из списка')
     def click_on_metro_station(self, station):
-        self.driver.find_element(*self.metro_stations[station]).click()
+        self.click_on_element(self.locators.metro_stations[station])
 
     @allure.step('Заполнить поле "Телефон"')
     def set_number(self, mobile_number):
-        self.driver.find_element(*self.mobile_number).send_keys(mobile_number)
+        self.fill_input(self.locators.mobile_number, mobile_number)
 
     @allure.step('Кликнуть на кнопку "Далее"')
     def click_next_button(self):
-        self.driver.find_element(*self.next_button).click()
+        self.click_on_element(self.locators.next_button)
 
     @allure.step('Указать персональную информацию')
     def set_personal_information(self, name, lastname, address, mobile_number, station):
