@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 import allure
 
 from locators.order_page_personal_info_locators import OrderPagePersonalAccLocators

@@ -1,8 +1,6 @@
-import time
-
 import allure
 import pytest
-from pages.main_page import BasePage, MainPage
+from pages.main_page import MainPage
 from pages.order_page_personal_info import OrderPage
 from pages.order_page_scooter_info import ScooterPage
 from urls import BASE_URL, DZEN_URL
