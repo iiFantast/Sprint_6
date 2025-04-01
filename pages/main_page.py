@@ -43,10 +43,9 @@ class MainPage(BasePage):
         self.click_on_element(self.locators.yandex_logo)
 
     @allure.step('Проверить, что открылась главная при клике на лого самоката')
-    def check_redirect_to_base_page_click_on_scooter(self):
+    def check_redirect_to_main_page_click_on_scooter(self):
         self.click_on_scooter_logo()
-        current_url = self.driver.current_url
-        return current_url
+        return self.get_current_url()
 
     @allure.step('Проверить, что открылась страница дзена при клике на лого Яндекса')
     def check_redirect_to_dzen_click_on_yandex_logo(self):
@@ -58,6 +57,5 @@ class MainPage(BasePage):
                 self.driver.switch_to.window(window)
                 break
 
-        WebDriverWait(self.driver, 5).until(expected_conditions.url_to_be(DZEN_URL))
-        current_url = self.driver.current_url
-        return current_url
+        self.wait_visibility_of_page_loaded(DZEN_URL)
+        return self.get_current_url()

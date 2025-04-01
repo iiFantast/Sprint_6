@@ -25,5 +25,5 @@ class TestOrder:
         scooter_page.click_on_accept_order_button()
         assert scooter_page.check_modal_page_header()
         scooter_page.click_on_check_status_button()
-        assert main_page.check_redirect_to_base_page_click_on_scooter() == BASE_URL
+        assert main_page.check_redirect_to_main_page_click_on_scooter() == BASE_URL
         assert main_page.check_redirect_to_dzen_click_on_yandex_logo() == DZEN_URL

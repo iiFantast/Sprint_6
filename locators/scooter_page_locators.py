@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 class ScooterLocators:
     date_field = [By.XPATH, './/input[@placeholder="* Когда привезти самокат"]']
-    date_in_calendar = [By.XPATH, './/div[@aria-label="Choose суббота, 8-е марта 2025 г."]']
+    date_in_calendar = [By.XPATH, './/div[@aria-label="Choose среда, 2-е апреля 2025 г."]']
     rental_period = [By.CLASS_NAME, 'Dropdown-control']
     period_values = [(By.XPATH, './/div[text()="двое суток"]'),
                      (By.XPATH, './/div[text()="сутки"]')
